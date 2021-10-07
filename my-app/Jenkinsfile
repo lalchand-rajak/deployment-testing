@@ -7,12 +7,12 @@ pipeline {
     }
 
     stages {
-        /*stage('Initialize'){
+        stage('Initialize'){
             steps{
-                echo "PATH = ${M2HOME}/bin:${PATH}"
-                echo "M2_HOME = /opt/maven"
+                echo "PATH = ${MAVEN_HOME}/bin:${PATH}"
+                echo "MAVEN_HOME = /usr/share/maven"
             }
-        }*/
+        }
         stage('Build') {
             steps {
                 dir("/var/lib/jenkins/workspace/New_demo/my-app/") {
