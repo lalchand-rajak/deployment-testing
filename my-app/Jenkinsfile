@@ -8,6 +8,7 @@ pipeline {
     environment{
         dockerImage = ''
         registry= 'lalchandrajak05/test-k8s/myapp'
+        registryCredential= 'dockerhub'
     }
 
     stages {
@@ -33,9 +34,19 @@ pipeline {
            // def image = docker.build("my-app")
            dockerImage = docker.build registry
           }
-        }
+             }
 
-     }
+        }
+        stage('uploading to docker image'){
+            steps{
+                script{
+                    docker.withRegistry( '', registryCredential ) {
+                     dockerImage.push()
+                    }
+
+                }
+            }
+        }
     }
     post {
        always {
