@@ -5,6 +5,10 @@ pipeline {
         maven "mymvn"
         //jdk "JDK"
     }
+    environment{
+        dockerImage = ''
+        registry= 'lalchandrajak05/test-k8s/myapp'
+    }
 
     stages {
         stage('Initialize'){
@@ -21,6 +25,16 @@ pipeline {
             
             }
         }
+        stage('Build Images') {
+       steps {
+        //sh 'mvn clean package'
+        script {
+          //docker.withRegistry('https://hub.docker.com/repository/docker/lalchandrajak05/test-k8s') {
+           // def image = docker.build("my-app")
+           dockerImage = docker.build registry
+          }
+        }
+
      }
     post {
        always {
