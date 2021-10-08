@@ -80,7 +80,7 @@
             <configuration>  
                 <archive>  
                     <manifest>  
-                        <mainClass>com.mycompany.app</mainClass>  
+                        <mainClass>App</mainClass>  
                     </manifest>  
                 </archive>  
             </configuration>  
